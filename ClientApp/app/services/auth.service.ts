@@ -1,5 +1,5 @@
 ﻿// src/app/auth/auth.service.ts
-//working locally
+//working locally with Auth0
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
