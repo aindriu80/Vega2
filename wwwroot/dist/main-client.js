@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "54e0c01d447c774e61b8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f51d1b1a04c0c8ba905e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9234,7 +9234,6 @@ module.exports = TransactionManager;
 
 "use strict";
 
-// src/app/auth/auth.service.ts
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9245,6 +9244,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// src/app/auth/auth.service.ts
+//working locally with Auth0
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(32);
 __webpack_require__(140);
@@ -16389,7 +16390,7 @@ module.exports = "<h1>Hello, Welcome to Vega!</h1>\n<img src=\"" + __webpack_req
 /* 124 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main-nav'>\n    <div class='navbar navbar-inverse'>\n        <div class='navbar-header'>\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\n                <span class='sr-only'>Toggle navigation</span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n            </button>\n            <a class='navbar-brand' [routerLink]=\"['/home']\">Vega</a>\n        </div>\n        <div class='clearfix'></div>\n        <div class='navbar-collapse collapse'>\n            <ul class='nav navbar-nav'>\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a (click)=\"auth.login()\" *ngIf=\"!auth.isAuthenticated()\">\r\n                        <span class='glyphicon glyphicon-user'></span> Login\r\n                    </a>\r\n                </li>\n                <li [routerLinkActive]=\"['link-active']\">\n                    <a (click)=\"auth.logout()\" *ngIf=\"auth.isAuthenticated()\">\n                        <span class='glyphicon glyphicon-user'></span> Logout\n                    </a>\n                </li>\n\n                <li [routerLinkActive]=\"['link-active']\" [routerLinkActiveOptions]=\"{exact: true}\">\n                    <a [routerLink]=\"['/vehicles']\">\n                        <span class='glyphicon glyphicon-home'></span> Vehicles\n                    </a>\n                </li>\n                <li [routerLinkActive]=\"['link-active']\">\n                    <a [routerLink]=\"['/vehicles/new']\">\n                        <span class='glyphicon glyphicon-plus'></span> New Vehicle\n                    </a>\n                </li>\n                <li [routerLinkActive]=\"['link-active']\">\n                    <a [routerLink]=\"['/counter']\">\n                        <span class=\"fa fa-calculator\" aria-hidden=\"true\"></span> Counter\n                    </a>\n                </li>\n                <li [routerLinkActive]=\"['link-active']\">\n                    <a [routerLink]=\"['/fetch-data']\">\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\n                    </a>\n                </li>\n            </ul>\n        </div>\n    </div>\n</div>\n";
+module.exports = "<div class=\"main-nav\">\r\n    <div class=\"navbar navbar-inverse\">\r\n        <div class=\"navbar-header\">\r\n            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n                <span class=\"sr-only\">Toggle navigation</span>\r\n                <span class=\"icon-bar\"></span>\r\n\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n            </button>\r\n            <a class=\"navbar-brand\" [routerLink]=\"['/home']\">Vega</a>\r\n        </div>\r\n        <div class=\"clearfix\"></div>\r\n        <div class=\"navbar-collapse collapse\">\r\n            <ul class=\"nav navbar-nav\">\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a href=\"https://aindriu80.eu.auth0.com/login?client=smlkRNkeVFWJUpu9l9w6rVf2ShJLYoNT\" *ngIf=\"!auth.isAuthenticated()\">\r\n                        <span class=\"glyphicon glyphicon-user\"></span> Login\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a (click)=\"auth.logout()\" *ngIf=\"auth.isAuthenticated()\">\r\n                        <span class=\"glyphicon glyphicon-user\"></span> Logout\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n                    <a [routerLink]=\"['/vehicles']\">\r\n                        <span class=\"glyphicon glyphicon-home\"></span> Vehicles\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/vehicles/new']\">\r\n                        <span class=\"glyphicon glyphicon-plus\"></span> New Vehicle\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <span class=\"fa fa-calculator\" aria-hidden=\"true\"></span> Counter\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class=\"glyphicon glyphicon-th-list\"></span> Fetch data\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>";
 
 /***/ }),
 /* 125 */
