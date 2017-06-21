@@ -18,9 +18,12 @@ namespace Vega
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true);
+            if (env.IsDevelopment())
+                builder = builder.AddUserSecrets<Startup>();
+
+            builder = builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
@@ -67,12 +70,12 @@ namespace Vega
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}");
 
                 routes.MapSpaFallbackRoute(
-                    name: "spa-fallback",
-                    defaults: new { controller = "Home", action = "Index" });
+                    "spa-fallback",
+                    new { controller = "Home", action = "Index" });
             });
         }
     }
