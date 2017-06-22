@@ -1,6 +1,6 @@
 <h1>Vehicle</h1>
  <div>
- 
+
    <!-- Nav tabs -->
    <ul class="nav nav-tabs" role="tablist">
      <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Vehicle</a></li>
@@ -27,7 +27,7 @@
         <li>Contact Phone: {{ vehicle.contact.phone }}</li>
         <li>Contact Email: {{ vehicle.contact.email }}</li>
       </ul>
-      <br/>
+      <br />
       <p>
         <a class="btn btn-primary" [routerLink]="['/vehicles/edit/', vehicle.id]">Edit</a>
         <button class="btn btn-danger" (click)="delete()">Delete</button>
@@ -37,13 +37,13 @@
     <!-- Photos tab -->
     <div role="tabpanel" class="tab-pane" id="photos">
       <h2>Photos</h2>
-      <input type="file" (change)="uploadPhoto()" #fileInput>   
-      <div class="progress" *ngIf="progress && progress.percentage < 100" >
+      <input type="file" (change)="uploadPhoto()" #fileInput>
+      <div class="progress" *ngIf="progress && progress.percentage < 100">
         <div class="progress-bar" [style.width]="progress.percentage + '%'">
           <span class="sr-only">{{ progress.percentage }}% Complete</span>
           </div>
-      </div>         
-      <img *ngFor="let photo of photos" src="/uploads/{{ photo.fileName }}" class="img-thumbnail" >
+      </div>
+      <img *ngFor="let photo of photos" src="/uploads/{{ photo.fileName }}" class="img-thumbnail">
     </div>
-  </div>  
+  </div>
 </div>

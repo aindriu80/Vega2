@@ -15,8 +15,6 @@ namespace Vega
                 .Build();
 
             host.Run();
-
-
         }
     }
 }

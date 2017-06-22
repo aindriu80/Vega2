@@ -7,6 +7,5 @@
         int Page { get; set; }
 
         byte PageSize { get; set; }
-
     }
 }

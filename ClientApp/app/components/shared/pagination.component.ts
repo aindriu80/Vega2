@@ -1,12 +1,13 @@
-import { 
-	Component,
-	Input, 
-	Output, 
-	EventEmitter }     from '@angular/core';
+import {
+    Component,
+    Input,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import { OnChanges } from '@angular/core';
 
 @Component({
-	selector: 'pagination',
+    selector: 'pagination',
     template: `
     <nav *ngIf="totalItems > pageSize">
         <ul class="pagination">
@@ -24,46 +25,46 @@ import { OnChanges } from '@angular/core';
                 </a>
             </li>
         </ul>
-    </nav>  
+    </nav>
 `
 })
 export class PaginationComponent implements OnChanges {
-  @Input('total-items') totalItems;
-	@Input('page-size') pageSize = 10;
-	@Output('page-changed') pageChanged = new EventEmitter();
-	pages: any[];
-	currentPage = 1; 
+    @Input('total-items') totalItems;
+    @Input('page-size') pageSize = 10;
+    @Output('page-changed') pageChanged = new EventEmitter();
+    pages: any[];
+    currentPage = 1;
 
-	ngOnChanges(){
-    this.currentPage = 1;
-        
-		var pagesCount = Math.ceil(this.totalItems / this.pageSize); 
-		this.pages = [];
-		for (var i = 1; i <= pagesCount; i++)
-			this.pages.push(i);
+    ngOnChanges() {
+        this.currentPage = 1;
 
-    console.log(this);
-	}
+        var pagesCount = Math.ceil(this.totalItems / this.pageSize);
+        this.pages = [];
+        for (var i = 1; i <= pagesCount; i++)
+            this.pages.push(i);
 
-	changePage(page){
-		this.currentPage = page; 
-		this.pageChanged.emit(page);
-	}
+        console.log(this);
+    }
 
-	previous(){
-		if (this.currentPage == 1)
-			return;
+    changePage(page) {
+        this.currentPage = page;
+        this.pageChanged.emit(page);
+    }
 
-		this.currentPage--;
-		this.pageChanged.emit(this.currentPage);
-	}
+    previous() {
+        if (this.currentPage == 1)
+            return;
 
-	next(){
-		if (this.currentPage == this.pages.length)
-			return; 
-		
-		this.currentPage++;
-    console.log("next", this);
-		this.pageChanged.emit(this.currentPage);
-	}
+        this.currentPage--;
+        this.pageChanged.emit(this.currentPage);
+    }
+
+    next() {
+        if (this.currentPage == this.pages.length)
+            return;
+
+        this.currentPage++;
+        console.log("next", this);
+        this.pageChanged.emit(this.currentPage);
+    }
 }

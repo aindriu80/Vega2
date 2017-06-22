@@ -9,7 +9,6 @@ using Vega.Persistence;
 
 namespace Vega.Controllers
 {
-
     public class MakesController : Controller
     {
         private readonly VegaDbContext _context;
@@ -20,6 +19,7 @@ namespace Vega.Controllers
             _context = context;
             _mapper = mapper;
         }
+
         [HttpGet("/api/makes")]
         public async Task<IEnumerable<MakeResource>> GetMakes()
         {

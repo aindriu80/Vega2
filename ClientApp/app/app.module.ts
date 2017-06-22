@@ -6,7 +6,7 @@ import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import * as Raven from 'raven-js';
 
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ToastyModule } from 'ng2-toasty';
@@ -25,24 +25,23 @@ import { PhotoService } from "./services/photo.service";
 import Authservice = require("./services/auth.service");
 import AuthService = Authservice.AuthService;
 Raven
-  .config('https://a2bcc6c4ad14410c9dc8fa71540b6986@sentry.io/167727')
-  .install();
-
+    .config('https://a2bcc6c4ad14410c9dc8fa71540b6986@sentry.io/167727')
+    .install();
 
 @NgModule({
-    bootstrap: [ AppComponent ],
+    bootstrap: [AppComponent],
     declarations: [
         AppComponent,
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent,        
-        VehicleFormComponent,        
-        VehicleListComponent,                
+        HomeComponent,
+        VehicleFormComponent,
+        VehicleListComponent,
         PaginationComponent,
         ViewVehicleComponent,
     ],
-    
+
     imports: [
         FormsModule,
         ToastyModule.forRoot(),
@@ -50,23 +49,23 @@ Raven
         RouterModule.forRoot([
             { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'vehicles/new', component:VehicleFormComponent },
-            { path: 'vehicles/edit/:id', component:VehicleFormComponent },
-            { path: 'vehicles/:id', component:ViewVehicleComponent },
-            { path: 'vehicles', component:VehicleListComponent },
+            { path: 'vehicles/new', component: VehicleFormComponent },
+            { path: 'vehicles/edit/:id', component: VehicleFormComponent },
+            { path: 'vehicles/:id', component: ViewVehicleComponent },
+            { path: 'vehicles', component: VehicleListComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
     providers: [
-        { provide: ErrorHandler, useClass: AppErrorHandler},
+        { provide: ErrorHandler, useClass: AppErrorHandler },
         { provide: BrowserXhr, useClass: BrowserXhrWithProgress },
         AuthService,
         VehicleService,
         PhotoService,
         ProgressService
-        
+
     ]
 })
 export class AppModule {

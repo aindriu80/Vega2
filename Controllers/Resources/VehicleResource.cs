@@ -21,6 +21,5 @@ namespace Vega.Controllers.Resources
         {
             Features = new Collection<KeyValuePairResource>();
         }
-
     }
 }

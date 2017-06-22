@@ -13,13 +13,9 @@ using Vega.Core.Models;
 
 namespace Vega.Controllers
 {
-
-
     [Route("/api/vehicles/{vehicleId}/photos")]
     public class PhotosController : Controller
     {
-
-
         private readonly IHostingEnvironment _host;
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IPhotoRepository _photoRepository;
@@ -80,6 +76,5 @@ namespace Vega.Controllers
 
             return Ok(_mapper.Map<Photo, PhotoResource>(photo));
         }
-
     }
 }

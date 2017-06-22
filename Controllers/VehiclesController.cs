@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Vega.Controllers.Resources;
 using Vega.Core;
@@ -9,7 +8,6 @@ using Vega.Core.Models;
 
 namespace Vega.Controllers
 {
-
     [Route("/api/vehicles")]
     public class VehiclesController : Controller
     {
@@ -23,10 +21,10 @@ namespace Vega.Controllers
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource vehicleResource)
         {
-
             // throw new Exception();
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -41,7 +39,6 @@ namespace Vega.Controllers
 
             var result = _mapper.Map<Vehicle, VehicleResource>(vehicle);
             return Ok(result);
-
         }
 
         [HttpPut("{id}")]
@@ -65,6 +62,7 @@ namespace Vega.Controllers
             var result = _mapper.Map<Vehicle, VehicleResource>(vehicle);
             return Ok(result);
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
@@ -77,7 +75,6 @@ namespace Vega.Controllers
             await _unitOfWork.CompleteAsync();
 
             return Ok(id);
-
         }
 
         [HttpGet("{id}")]
@@ -101,7 +98,7 @@ namespace Vega.Controllers
 
             return _mapper.Map<QueryResult<Vehicle>, QueryResultResource<VehicleResource>>(queryResult);
 
-           // return _mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleResource>>(queryResult);
+            // return _mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleResource>>(queryResult);
         }
     }
 }

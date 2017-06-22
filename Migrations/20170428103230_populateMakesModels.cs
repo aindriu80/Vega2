@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Vega.Migrations
 {
@@ -23,12 +21,10 @@ namespace Vega.Migrations
             migrationBuilder.Sql("Insert INTO Models (Name, MakeID) VALUES('Make3-ModelA',3)");
             migrationBuilder.Sql("Insert INTO Models (Name, MakeID) VALUES('Make3-ModelB',3)");
             migrationBuilder.Sql("Insert INTO Models (Name, MakeID) VALUES('Make3-ModelC',3)");
-
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
         }
     }
 }

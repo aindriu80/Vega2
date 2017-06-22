@@ -14,7 +14,6 @@ namespace Vega.Controllers
         private readonly VegaDbContext _context;
         private readonly IMapper _mapper;
 
-
         public FeaturesController(VegaDbContext context, IMapper mapper)
         {
             _context = context;

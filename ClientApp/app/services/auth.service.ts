@@ -7,17 +7,16 @@ import * as auth0 from 'auth0-js';
 
 @Injectable()
 export class AuthService {
-
     auth0 = new auth0.WebAuth({
         clientID: 'smlkRNkeVFWJUpu9l9w6rVf2ShJLYoNT',
         domain: 'aindriu80.eu.auth0.com',
         responseType: 'token id_token',
         audience: 'https://aindriu80.eu.auth0.com/userinfo',
-        redirectUri: 'http://localhost:11562/callback',      
+        redirectUri: 'http://localhost:11562/callback',
         scope: 'openid'
     });
 
-    constructor(public router: Router) {}
+    constructor(public router: Router) { }
 
     public login(): void {
         this.auth0.authorize();

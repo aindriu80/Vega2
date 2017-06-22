@@ -2,6 +2,7 @@
 using System.Linq;
 using Vega.Controllers.Resources;
 using Vega.Core.Models;
+
 namespace Vega.Mapping
 {
     public class MappingProfile : Profile
@@ -36,7 +37,6 @@ namespace Vega.Mapping
                         Phone = v.ContactPhone
                     }))
                 .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => new KeyValuePairResource { Id = vf.Feature.Id, Name = vf.Feature.Name })));
-
 
             // API Resource to domain
             CreateMap<SaveVehicleResource, Vehicle>()
