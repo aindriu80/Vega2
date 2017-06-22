@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,19 +18,19 @@ namespace Vega.Controllers
         private readonly IHostingEnvironment _host;
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IPhotoRepository _photoRepository;
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IPhotoService _photoService;
         private readonly PhotoSettings _photoSettings;
 
         public PhotosController(IHostingEnvironment host, IVehicleRepository vehicleRepository, IPhotoRepository photoRepository,
-            IUnitOfWork unitOfWork, IMapper mapper, IOptionsSnapshot<PhotoSettings> options)
+             IMapper mapper, IOptionsSnapshot<PhotoSettings> options, IPhotoService photoService)
         {
             _photoSettings = options.Value;
             _host = host;
             _vehicleRepository = vehicleRepository;
             _photoRepository = photoRepository;
-            _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _photoService = photoService;
         }
 
         [HttpGet]
@@ -55,24 +54,9 @@ namespace Vega.Controllers
 
             if (!_photoSettings.IsSupported(file.FileName)) return BadRequest("Invalid file type.");
 
+
             var uploadsFolderPath = Path.Combine(_host.WebRootPath, "uploads");
-            // c:\wwwroot\
-            if (!Directory.Exists(uploadsFolderPath))
-                Directory.CreateDirectory(uploadsFolderPath);
-
-            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-            var filePath = Path.Combine(uploadsFolderPath, fileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
-
-            //System.Drawing not in .NET Core at the moment
-
-            var photo = new Photo { Filename = fileName };
-            vehicle.Photos.Add(photo);
-            await _unitOfWork.CompleteAsync();
+            var photo = await _photoService.UploadPhoto(vehicle, file, uploadsFolderPath);
 
             return Ok(_mapper.Map<Photo, PhotoResource>(photo));
         }
