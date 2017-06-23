@@ -39,6 +39,7 @@ namespace Vega
             services.AddScoped<IPhotoRepository, PhotoRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IPhotoService, PhotoService>();
+            services.AddTransient<IPhotoStorage, FileSystemPhotoStorage>();
 
             services.AddDbContext<VegaDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
